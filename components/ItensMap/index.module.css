@@ -1,0 +1,14 @@
+.image {
+  border-radius: 3%;
+}
+.link {
+  cursor: pointer;
+  background-color: rgba(255, 166, 0, 0.196);
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 3%;
+  letter-spacing: 2px;
+}
+.link:hover {
+  background-color: rgba(255, 166, 0, 0.385)
+}
