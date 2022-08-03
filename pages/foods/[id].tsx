@@ -26,8 +26,11 @@ export default function FoodsID(props: IProps) {
   const ingredients = Object.entries(data).filter(
     (item) => item[0].includes('strIngredient') && item[1] !== ''
   )
-  const mensuare = Object.entries(data).filter((item) => item[0].includes('strMeasure') && item[1].length > 1)
-  const mensuareIngredients = ingredients.map((item, i) => [...item, mensuare[i][1]])
+  const measure = Object.entries(data).filter((item) => item[0].includes('strMeasure') && item[1].length > 1)
+  const measureIngredients = ingredients.map((item) => {
+    if (measure.length === 1) return [...item, measure[0][1]]
+    return [...item, measure[0][1]]
+  })
   return (
     <div className={styles.container}>
       <picture>
@@ -43,7 +46,7 @@ export default function FoodsID(props: IProps) {
       <div>
         <h3 className={styles.title}>Ingredients</h3>
         <ul className={styles.ul}>
-          {mensuareIngredients.map((item, i) => (
+          {measureIngredients.map((item, i) => (
             <li className={styles.li} key={i}>
               - {`${item[1]} - ${item[2]} `}
             </li>
@@ -62,7 +65,7 @@ export default function FoodsID(props: IProps) {
         allowFullScreen
         className={styles.video}
       ></iframe>
-       <Link href={`/drinks/${data.idMeal}/in-progress`} >
+       <Link href={`/foods/${data.idMeal}/in-progress`} >
           <Button size="large" sx={{mb: "80px"}}variant="contained">Start Recipe</Button>
       </Link>
     </div>

@@ -12,16 +12,17 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import styles from './Header.module.css'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-const pages = ['Receitas', 'Favoritos', 'Perfil']
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const pages = ['Recipes Done', 'Favorites', 'Profile']
+const settings = ['Recipes Done', 'Favorites', 'Profile', 'Logout']
 
-const ResponsiveAppBar = () => {
+export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   )
-
+  const router = useRouter();
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
   }
@@ -36,14 +37,21 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
+  const handleTagIconMenu = (params: string) => {
+    if (params === 'Recipes Done') return router.push('/recipesdone')
+    if (params === 'Favorites') return router.push('/favorites')
+    if (params === 'Profile') return router.push('/profile')
+    if (params === 'Logout') return router.push('/')
+    
+  }
 
   return (
     <AppBar position="static" className={styles.navBar}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link href="/receitas" >
+          <Link href="/receitas">
             <Typography
-            className={styles.cursor}
+              className={styles.cursor}
               variant="h6"
               noWrap
               component="a"
@@ -99,7 +107,7 @@ const ResponsiveAppBar = () => {
           </Box>
           <Link href="/receitas">
             <Typography
-            className={styles.cursor}
+              className={styles.cursor}
               variant="h5"
               noWrap
               component="a"
@@ -153,7 +161,7 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                    <Typography onClick={() => handleTagIconMenu(setting)} textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -163,4 +171,3 @@ const ResponsiveAppBar = () => {
     </AppBar>
   )
 }
-export default ResponsiveAppBar

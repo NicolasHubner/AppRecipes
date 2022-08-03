@@ -26,8 +26,11 @@ export default function inProgress(props: IProps) {
   const ingredients = Object.entries(data).filter(
     (item) => item[0].includes('strIngredient') && item[1] !== ''
   )
-  const mensuare = Object.entries(data).filter((item) => item[0].includes('strMeasure') && item[1].length > 1)
-  const mensuareIngredients = ingredients.map((item, i) => [...item, mensuare[i][1]])
+  const measure = Object.entries(data).filter((item) => item[0].includes('strMeasure') && item[1].length > 1)
+  const measureIngredients = ingredients.map((item) => {
+    if (measure.length === 1) return [...item, measure[0][1]]
+    return [...item, measure[0][1]]
+  })
   return (
     <div className={styles.container}>
       <picture>
@@ -43,7 +46,7 @@ export default function inProgress(props: IProps) {
       <div>
         <h3 className={styles.title}>Ingredients</h3>
         <ul className={styles.ulLabel}>
-          {mensuareIngredients.map((item, i) => (
+          {measureIngredients.map((item, i) => (
             <label htmlFor={item[0]} key={i} className={styles.label}>
               <Checkbox
                 id={item[0]}

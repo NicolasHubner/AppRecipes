@@ -3,10 +3,16 @@ import MyGlobalContext from './MyContext'
 
 const Provider = ({ children }: any) => {
   const [type, setType] = useState('Comidas')
+  const [profile, setProfile ] = useState({
+    email: 'teste@email.com',
+    password: 'password',
+  })
 
   const INITAL_STATE = {
     tipo: type,
-    setType
+    profile,
+    setType,
+    setProfile
   }
 
   return (
