@@ -50,8 +50,8 @@ export default function SignInSide() {
     //   password: data.get('password'),
     // })
     const profile = {
-      email: data.get('email')?.toString(),
-      password: data.get('password')?.toString(),
+      email: data.get('email')?.toString() as string,
+      password: data.get('password')?.toString() as string,
     }
     setProfile(profile)
   }
