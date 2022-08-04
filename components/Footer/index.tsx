@@ -29,7 +29,7 @@ export default function StickyFooter() {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '10vh',
+        minHeight: '5vh',
         width: '100%',
       }}
       position="fixed"
@@ -40,7 +40,7 @@ export default function StickyFooter() {
         sx={{
           py: 1,
           px: 2,
-          mt: 'auto',
+          mt: '10px',
           backgroundColor: (theme) =>
             theme.palette.mode === 'light'
               ? theme.palette.grey[200]
@@ -53,17 +53,19 @@ export default function StickyFooter() {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'space-around',
+              alignItems: 'center',
               mb: 1,
             }}
           >
-            <IconButton onClick={() => setType('Comidas')}>
+            <IconButton onClick={() => setType('Foods')}>
               <img
                 src="https://img.icons8.com/wired/64/000000/salami-pizza.png"
                 width="30px"
                 height="30px"
               />
             </IconButton>
-            <IconButton onClick={() => setType('Bebidas')}>
+            <Copyright />
+            <IconButton onClick={() => setType('Drinks')}>
               <img
                 src="https://img.icons8.com/wired/64/000000/cocktail.png"
                 width="30px"
@@ -71,7 +73,6 @@ export default function StickyFooter() {
               />
             </IconButton>
           </Box>
-          <Copyright />
         </Container>
       </Box>
     </Box>

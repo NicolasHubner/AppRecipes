@@ -26,12 +26,13 @@ export default function DrinksID(props: IProps) {
   const ingredients = Object.entries(data).filter(
     (item) => item[0].includes('strIngredient') && item[1] !== null
   )
-  const measure = Object.entries(data).filter((item) => item[0].includes('strMeasure') && item[1] !== null && " ")
+  const measure = Object.entries(data).filter(
+    (item) => item[0].includes('strMeasure') && item[1] !== null && ' '
+  )
   const measureIngredients = ingredients.map((item) => {
     if (measure.length === 1) return [...item, measure[0][1]]
     return [...item, measure[0][1]]
-  }
-  );
+  })
   return (
     <div className={styles.container}>
       <picture>
@@ -56,8 +57,20 @@ export default function DrinksID(props: IProps) {
         <h3 className={styles.title}>Instructions</h3>
         <p className={styles.instruct}>{data.strInstructions}</p>
       </div>
-      <Link href={`/drinks/${data.idDrink}/in-progress`} >
-      <Button size="large" sx={{mb: "80px"}}variant="contained">Start Recipe</Button>
+      <Link href={`/drinks/${data.idDrink}/in-progress`}>
+        <Button
+          size="large"
+          sx={{
+            mb: '80px',
+            width: '280px',
+            height: '50px',
+            backgroundColor: 'rgb(240, 165, 26)',
+            color: 'black',
+          }}
+          variant="contained"
+        >
+          Start Recipe
+        </Button>
       </Link>
     </div>
   )

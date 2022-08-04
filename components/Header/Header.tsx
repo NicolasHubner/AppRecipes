@@ -13,6 +13,8 @@ import MenuItem from '@mui/material/MenuItem'
 import styles from './Header.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import MyGlobalContext, { IMyContext } from '../../context/MyContext'
+import { useContext } from 'react'
 
 const pages = ['Recipes Done', 'Favorites', 'Profile']
 const settings = ['Recipes Done', 'Favorites', 'Profile', 'Logout']
@@ -22,7 +24,9 @@ export default function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   )
-  const router = useRouter();
+  const value = useContext(MyGlobalContext) as IMyContext
+  const { profile } = value
+  const router = useRouter()
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
   }
@@ -42,7 +46,6 @@ export default function ResponsiveAppBar() {
     if (params === 'Favorites') return router.push('/favorites')
     if (params === 'Profile') return router.push('/profile')
     if (params === 'Logout') return router.push('/')
-    
   }
 
   return (
@@ -65,7 +68,7 @@ export default function ResponsiveAppBar() {
                 textDecoration: 'none',
               }}
             >
-              AppReceitas
+              Recipes App
             </Typography>
           </Link>
 
@@ -122,14 +125,14 @@ export default function ResponsiveAppBar() {
                 textDecoration: 'none',
               }}
             >
-              AppReceitas
+              Recipes App
             </Typography>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleTagIconMenu(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
@@ -140,7 +143,10 @@ export default function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt={profile.email.toUpperCase()}
+                  src="https://icons8.com.br/icons/set/cachorros#:~:text=https%3A//img.icons8.com/ios/50/000000/dog%2D%2Dv2.png"
+                />
               </IconButton>
             </Tooltip>
             <Menu
@@ -161,7 +167,12 @@ export default function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography onClick={() => handleTagIconMenu(setting)} textAlign="center">{setting}</Typography>
+                  <Typography
+                    onClick={() => handleTagIconMenu(setting)}
+                    textAlign="center"
+                  >
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>

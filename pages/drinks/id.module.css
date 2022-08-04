@@ -1,29 +1,31 @@
 .image {
-    border-radius: 3px;
+  border-radius: 3px;
 }
 .container {
-    width: 90%;
-    margin: 30px auto;
+  max-width: 600px;
+  width: 90%;
+  margin: 30px auto;
 }
 .li {
-    list-style-type: none;
-    padding-left: 10px;
-    font-size: 1.2em;
-    text-align: left;
+  list-style-type: none;
+  padding-left: 10px;
+  font-size: 1.2em;
+  text-align: left;
 }
 .ul {
-    margin: 0 auto;
-    padding-left: 0px;
+  margin: 0 auto;
+  padding-left: 0px;
 }
 .instruct {
-    letter-spacing: 1.2px;
-    line-height:1.4;
-    text-align: justify;
-    margin-bottom: 30px;
+  letter-spacing: 1.2px;
+  line-height: 1.4;
+  text-align: justify;
+  margin-bottom: 30px;
 }
 .title {
-    background-color: rgba(255, 166, 0, 0.15);
-    line-height: normal;
-    padding: 0.5em;
-    border-radius: 3px;
+  background-color: rgba(255, 166, 0, 0.15);
+  line-height: normal;
+  padding: 0.5em;
+  border-radius: 3px;
+  box-shadow: 2px 3px 5px black;
 }

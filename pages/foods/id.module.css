@@ -1,50 +1,52 @@
 .image {
-    border-radius: 3px;
+  border-radius: 3px;
 }
 .video {
-    margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 .container {
-    width: 90%;
-    margin: 30px auto;
+  max-width: 600px;
+  width: 90%;
+  margin: 30px auto;
 }
 .li {
-    list-style-type: none;
-    padding-left: 10px;
-    font-size: 1.2em;
-    text-align: left;
+  list-style-type: none;
+  padding-left: 10px;
+  font-size: 1.2em;
+  text-align: left;
 }
 .ul {
-    margin: 0 auto;
-    padding-left: 0px;
+  margin: 0 auto;
+  padding-left: 0px;
 }
 .instruct {
-    letter-spacing: 1.2px;
-    line-height:1.4;
-    text-align: justify;
+  letter-spacing: 1.2px;
+  line-height: 1.4;
+  text-align: justify;
 }
 .title {
-    background-color: rgba(255, 166, 0, 0.15);
-    line-height: normal;
-    padding: 0.5em;
-    border-radius: 3px;
+  background-color: rgba(255, 166, 0, 0.15);
+  line-height: normal;
+  padding: 0.5em;
+  border-radius: 3px;
+  box-shadow: 2px 3px 5px black;
 }
 .instructProgress {
-    letter-spacing: 1.2px;
-    line-height:1.4;
-    text-align: justify;
-    margin-bottom: 30px;
+  letter-spacing: 1.2px;
+  line-height: 1.4;
+  text-align: justify;
+  margin-bottom: 30px;
 }
 .label {
-    display: flex;
-    flex-direction: row;
-    justify-content:align-center;
+  display: flex;
+  flex-direction: row;
+  justify-content: align-center;
 }
 .ulLabel {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0px;
 }
 .textIngredient {
-    padding-left: 10px;
+  padding-left: 10px;
 }

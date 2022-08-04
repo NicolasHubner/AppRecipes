@@ -10,8 +10,8 @@ export default function Receitas({ meals, drinks }: IType) {
 
   return (
     <>
-      <h1>Receitas: {tipo}</h1>
-      {tipo === 'Comidas' ? <Foods data={meals} /> : <Drinks data={drinks} />}
+      <h1>Recipes: {tipo}</h1>
+      {tipo === 'Foods' ? <Foods data={meals} /> : <Drinks data={drinks} />}
     </>
   )
 }

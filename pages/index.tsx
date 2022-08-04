@@ -11,9 +11,9 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import MyGlobalContext from '../context/MyContext'
+import MyGlobalContext, { IMyContext } from '../context/MyContext'
 import { useContext } from 'react'
-
+import { useRouter } from 'next/router'
 
 interface ICopyright {
   sx: {
@@ -38,20 +38,22 @@ function Copyright(props: ICopyright) {
 const theme = createTheme()
 
 export default function SignInSide() {
-  // const value = useContext(MyGlobalContext);
-  // const { setProfile } = value;
-  
+  const value = useContext(MyGlobalContext) as unknown as IMyContext
+  const { setProfile } = value
+  const router = useRouter()
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    })
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // })
     const profile = {
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get('email')?.toString(),
+      password: data.get('password')?.toString(),
     }
+    setProfile(profile)
   }
 
   return (
@@ -125,7 +127,7 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                // onClick={()}
+                onClick={() => router.push('/receitas')}
               >
                 Sign In
               </Button>
