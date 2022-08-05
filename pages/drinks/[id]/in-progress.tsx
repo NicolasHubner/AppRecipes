@@ -1,5 +1,11 @@
 import { Button, Checkbox } from '@mui/material'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import MyGlobalContext, {
+  IDoneRecipes,
+  IMyContext,
+} from '../../../context/MyContext'
 import { cockTailApi } from '../../../helpers/functions/foodAndCocktailApi'
 import styles from '../../foods/id.module.css'
 
@@ -9,7 +15,7 @@ interface IProps {
     strDrink: string
     strInstructions: string
     strDrinkThumb: string
-    strYoutube: string
+    strAlcoholic: string
   }
 }
 interface IParams {
@@ -21,8 +27,10 @@ interface IItem {
   idDrink: number
 }
 
-export default function inProgress(props: IProps) {
+export default function InProgress(props: IProps) {
   const { data } = props
+  const value = useContext(MyGlobalContext) as IMyContext
+  const { setRecipes, doneRecipes } = value
   const ingredients = Object.entries(data).filter((item) =>
     item[1] !== null && ' ' ? item[0].includes('strIngredient') : false
   )
@@ -35,6 +43,27 @@ export default function inProgress(props: IProps) {
     if (measure.length === 1) return [...item, measure[0][1]]
     return [...item, measure[0][1]]
   })
+  const router = useRouter()
+  // console.log(router)
+
+  const handleAddRecipes = () => {
+    const recipe = {
+      name: data.strDrink,
+      thumb: data.strDrinkThumb,
+      type: data.strAlcoholic,
+      data: {
+        dia: new Date().getDate(),
+        mes: new Date().getMonth() + 1,
+        ano: new Date().getFullYear(),
+      },
+      id: data.idDrink,
+      path: router.asPath,
+    }
+    const newArray = []
+    newArray.push(recipe)
+    if (!doneRecipes) return setRecipes(newArray)
+    if (doneRecipes) return setRecipes((prev: any) => [...prev, recipe])
+  }
 
   return (
     <div className={styles.container}>
@@ -63,8 +92,21 @@ export default function inProgress(props: IProps) {
         <h3 className={styles.title}>Instructions</h3>
         <p className={styles.instructProgress}>{data.strInstructions}</p>
       </div>
-      <Link href={`/drinks/${data.idDrink}/in-progress`} >
-        <Button size="large" sx={{mb: "80px"}}variant="contained">Finish Recipe</Button>
+      <Link href={`/recipesdone`}>
+        <Button
+          onClick={() => handleAddRecipes()}
+          size="large"
+          sx={{
+            mb: '80px',
+            width: '280px',
+            height: '50px',
+            backgroundColor: 'rgb(240, 165, 26)',
+            color: 'black',
+          }}
+          variant="contained"
+        >
+          Finish Recipe
+        </Button>
       </Link>
     </div>
   )

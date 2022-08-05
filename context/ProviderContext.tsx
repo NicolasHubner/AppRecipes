@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
-import MyGlobalContext from './MyContext'
+import MyGlobalContext, { IDoneRecipes, IProfile } from './MyContext'
 
 const Provider = ({ children }: any) => {
-  const [type, setType] = useState('Comidas')
-  const [profile, setProfile ] = useState({
+  const [type, setType] = useState('Foods')
+  const [profile, setProfile] = useState<IProfile>({
     email: 'teste@email.com',
     password: 'password',
   })
+  const [doneRecipes, setRecipes] = useState<IDoneRecipes[]>([])
 
   const INITAL_STATE = {
     tipo: type,
     profile,
+    doneRecipes,
     setType,
-    setProfile
+    setProfile,
+    setRecipes,
   }
 
   return (

@@ -26,7 +26,9 @@ export default function FoodsID(props: IProps) {
   const ingredients = Object.entries(data).filter(
     (item) => item[0].includes('strIngredient') && item[1] !== ''
   )
-  const measure = Object.entries(data).filter((item) => item[0].includes('strMeasure') && item[1].length > 1)
+  const measure = Object.entries(data).filter(
+    (item) => item[0].includes('strMeasure') && item[1].length > 1
+  )
   const measureIngredients = ingredients.map((item) => {
     if (measure.length === 1) return [...item, measure[0][1]]
     return [...item, measure[0][1]]
@@ -65,8 +67,20 @@ export default function FoodsID(props: IProps) {
         allowFullScreen
         className={styles.video}
       ></iframe>
-       <Link href={`/foods/${data.idMeal}/in-progress`} >
-          <Button size="large" sx={{mb: "80px"}}variant="contained">Start Recipe</Button>
+      <Link href={`/foods/${data.idMeal}/in-progress`}>
+        <Button
+          size="large"
+          sx={{
+            mb: '80px',
+            width: '280px',
+            height: '50px',
+            backgroundColor: 'rgb(240, 165, 26)',
+            color: 'black',
+          }}
+          variant="contained"
+        >
+          Start Recipe
+        </Button>
       </Link>
     </div>
   )

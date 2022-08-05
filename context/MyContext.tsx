@@ -1,15 +1,25 @@
 import { createContext } from 'react'
 
-interface IProfile {
+export interface IProfile {
   email: string
-  password: string
+  password: string | unknown
 }
 
+export interface IDoneRecipes {
+  name: string
+  thumb: string
+  type?: string
+  data: any
+  id: string
+  path: string
+}
 export interface IMyContext {
   tipo: string
   profile: IProfile
-  setProfile:  React.Dispatch<React.SetStateAction<IProfile>>
-  setType:  React.Dispatch<React.SetStateAction<string>>
+  doneRecipes: IDoneRecipes[]
+  setProfile: React.Dispatch<React.SetStateAction<IProfile>>
+  setType: React.Dispatch<React.SetStateAction<string>>
+  setRecipes: React.Dispatch<React.SetStateAction<IDoneRecipes[]>>
 }
 
 const MyGlobalContext = createContext<IMyContext | null>(null)
