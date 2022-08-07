@@ -1,5 +1,4 @@
-import { IconButton } from '@material-ui/core'
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Typography, Button, IconButton } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { foodsApi } from '../../helpers/functions/foodAndCocktailApi'
@@ -90,15 +89,15 @@ export default function FoodsID(props: IProps) {
         allowFullScreen
         className={styles.video}
       ></iframe>
-      <Link href={`/foods/${data.idMeal}/in-progress`}>
+      <Link href={`/drinks/${data.idMeal}/in-progress`}>
         <Button
           size="large"
           sx={{
-            mb: '80px',
+            backgroundColor: 'rgb(240, 165, 26)',
             width: '280px',
             height: '50px',
-            backgroundColor: 'rgb(240, 165, 26)',
             color: 'black',
+            mb: '80px',
           }}
           variant="contained"
         >

@@ -1,11 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Checkbox } from '@mui/material'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
-import MyGlobalContext, {
-  IDoneRecipes,
-  IMyContext,
-} from '../../../context/MyContext'
+import MyGlobalContext, { IMyContext } from '../../../context/MyContext'
 import { cockTailApi } from '../../../helpers/functions/foodAndCocktailApi'
 import styles from '../../foods/id.module.css'
 
