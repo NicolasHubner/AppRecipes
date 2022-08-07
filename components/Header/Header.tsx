@@ -49,7 +49,7 @@ export default function ResponsiveAppBar() {
   }
 
   return (
-    <AppBar position="static" className={styles.navBar}>
+    <AppBar position="static" sx={{ backgroundColor: 'rgb(240, 165, 26);' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/receitas">

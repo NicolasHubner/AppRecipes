@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Checkbox } from '@mui/material'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -30,7 +31,7 @@ export default function InProgress(props: IProps) {
     (item) => item[0].includes('strIngredient') && item[1] !== ''
   )
   const measure = Object.entries(data).filter(
-    (item) => item[0].includes('strMeasure') && item[1].length > 1
+    (item) => item[0].includes('strMeasure') && item[1] !== null
   )
   const measureIngredients = ingredients.map((item) => {
     if (measure.length === 1) return [...item, measure[0][1]]

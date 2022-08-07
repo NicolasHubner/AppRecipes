@@ -16,7 +16,7 @@ interface IData {
 export default function ItensMap(props: PropsI) {
   const { title, data } = props
   const [type, setType] = useState<string>('')
-  const [search, setSearch] = useState<>(data)
+  const [search, setSearch] = useState(data)
 
   useEffect(() => {
     if (title === 'foods') return setType('Meal')
