@@ -11,14 +11,17 @@ export default function Profile() {
 
   return (
     <>
-      <h2>Hello user from:</h2>
-      <h3>{profile.email as string}</h3>
+      <h2>Hello, {profile.email as string}</h2>
+      <h3>This is your profile</h3>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           width: '75%',
           margin: 'auto ',
+          alignItems: 'stretch',
+          maxWidth: '350px',
+          justifyContent: 'center',
         }}
       >
         <br />

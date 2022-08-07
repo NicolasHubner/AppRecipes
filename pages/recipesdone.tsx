@@ -1,8 +1,10 @@
 import { Typography } from '@mui/material'
 import { Box, Container } from '@mui/system'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import MyGlobalContext, { IMyContext } from '../context/MyContext'
+import styles from './recipesDone.module.css'
 
 export default function RecipesDone() {
   const value = useContext(MyGlobalContext) as IMyContext
@@ -21,6 +23,8 @@ export default function RecipesDone() {
                 justifyContent: 'space-between',
                 backgroundColor: '#eceff1',
                 // p: '5px',
+                margin: '0 auto',
+                maxWidth: '500px',
                 borderRadius: '5px',
                 boxShadow: '3px 4px 8px rgba(0, 0, 0, 0.5)',
                 mt: '10px',
@@ -33,8 +37,9 @@ export default function RecipesDone() {
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  ml: '30px',
+                  // ml: '30px',
                   p: '5px',
+                  pr: '20px',
                   justifyContent: 'space-between',
                 }}
               >
@@ -46,9 +51,11 @@ export default function RecipesDone() {
           ))
         ) : (
           <Typography variant="h6" sx={{ mt: '40px' }}>
-            Hey there you haven`t end any recipe, <br /> check the{'   '}
-            <b>RECIPES APP </b>
-            and select someone to do! =)
+            Hey there! You haven&apos;t finished any recipes yet, <br />{' '}
+            <Link href="/receitas">
+              <a className={styles.link}>click here</a>
+            </Link>{' '}
+            and select a recipe!
           </Typography>
         )}
       </Container>

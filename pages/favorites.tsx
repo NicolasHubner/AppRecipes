@@ -41,7 +41,7 @@ export default function Favorites() {
           ))
         ) : (
           <Typography variant="h6" sx={{ mt: '40px' }}>
-            Hey there you haven`t favorite any recipes =(
+            Hey there! You don&apos;t have any favorite recipes as of yet!
           </Typography>
         )}
       </Container>
