@@ -4,6 +4,9 @@ import { cockTailApi } from '../../helpers/functions/foodAndCocktailApi'
 import styles from './id.module.css'
 import Image from 'next/image'
 import favorite from '../../images/favorite.svg'
+import router from 'next/router'
+import { useContext } from 'react'
+import MyGlobalContext, { IMyContext } from '../../context/MyContext'
 
 interface IProps {
   data: {
@@ -25,6 +28,8 @@ interface IItem {
 
 export default function DrinksID(props: IProps) {
   const { data } = props
+  const value = useContext(MyGlobalContext) as IMyContext
+  const { setFavorites, favorites } = value
   const ingredients = Object.entries(data).filter(
     (item) => item[0].includes('strIngredient') && item[1] !== null
   )
@@ -35,6 +40,20 @@ export default function DrinksID(props: IProps) {
     if (measure.length === 1) return [...item, measure[0][1]]
     return [...item, measure[0][1]]
   })
+
+  const handleFavoriteRecipes = () => {
+    alert(`The recipe ${data.strDrink} was add to favorites`)
+    const recipe = {
+      name: data.strDrink,
+      thumb: data.strDrinkThumb,
+      id: data.idDrink,
+      path: router.asPath,
+    }
+    const newArray = []
+    newArray.push(recipe)
+    if (!favorites) return setFavorites(newArray)
+    if (favorites) return setFavorites((prev: any) => [...prev, recipe])
+  }
   return (
     <div className={styles.container}>
       <picture>
@@ -58,11 +77,7 @@ export default function DrinksID(props: IProps) {
         <Typography variant="h2" sx={{ m: 2, textAlign: 'start' }}>
           {data.strDrink}
         </Typography>
-        <IconButton
-          onClick={() =>
-            alert(`The recipe ${data.strDrink} was add to favorites`)
-          }
-        >
+        <IconButton onClick={() => handleFavoriteRecipes()}>
           <Image src={favorite} alt="favorite" width="30px" height="30px" />
         </IconButton>
       </Box>

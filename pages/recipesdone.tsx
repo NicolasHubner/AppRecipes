@@ -18,11 +18,11 @@ export default function RecipesDone() {
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'space-around',
+                justifyContent: 'space-between',
                 backgroundColor: '#eceff1',
-                p: '5px',
+                // p: '5px',
                 borderRadius: '5px',
-                boxShadow: '3px 4px 4px rgba(0, 0, 0, 0.5)',
+                boxShadow: '3px 4px 8px rgba(0, 0, 0, 0.5)',
                 mt: '10px',
               }}
               key={index}
@@ -34,11 +34,12 @@ export default function RecipesDone() {
                   display: 'flex',
                   flexDirection: 'column',
                   ml: '30px',
+                  p: '5px',
                   justifyContent: 'space-between',
                 }}
               >
-                <h4>{item.name}</h4>
-                <p>{`End Date: ${item.data.mes}/${item.data.dia}/${item.data.ano}`}</p>
+                <Typography variant="h4">{item.name}</Typography>
+                <Typography variant="h6">{`End Date: ${item.data.mes}/${item.data.dia}/${item.data.ano}`}</Typography>
                 <p>{item.type}</p>
               </Box>
             </Box>

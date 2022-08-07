@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MyGlobalContext, { IDoneRecipes, IProfile } from './MyContext'
+import MyGlobalContext, { IDoneRecipes, IFavorite, IProfile } from './MyContext'
 
 const Provider = ({ children }: any) => {
   const [type, setType] = useState('Foods')
@@ -9,13 +9,17 @@ const Provider = ({ children }: any) => {
   })
   const [doneRecipes, setRecipes] = useState<IDoneRecipes[]>([])
 
+  const [favorites, setFavorites] = useState<IFavorite[]>([])
+
   const INITAL_STATE = {
     tipo: type,
     profile,
     doneRecipes,
+    favorites,
     setType,
     setProfile,
     setRecipes,
+    setFavorites,
   }
 
   return (
