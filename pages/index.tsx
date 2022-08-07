@@ -1,11 +1,6 @@
-// import * as React from 'react'
-import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
-// import FormControlLabel from '@mui/material/FormControlLabel'
-// import Checkbox from '@mui/material/Checkbox'
-// import Link from '@mui/material/Link'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -14,6 +9,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import MyGlobalContext, { IMyContext } from '../context/MyContext'
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
+import NextJs from '../images/next-js.svg'
+import Image from 'next/image'
 
 interface ICopyright {
   sx: {
@@ -86,7 +83,12 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
+            {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar> */}
+            <Image src={NextJs} alt="Next" width="100" height="100" />
+            <Typography sx={{ mb: 10 }} component="h1" variant="h4">
+              {' '}
+              Next.js App Recipes
+            </Typography>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
@@ -104,7 +106,6 @@ export default function SignInSide() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                // onChange={(e) => hadleChange(e)}
                 autoFocus
               />
               <TextField
@@ -116,12 +117,7 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                // onChange={(e) => hadleChange(e)}
               />
-              {/* <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              /> */}
               <Button
                 type="submit"
                 fullWidth
@@ -131,18 +127,6 @@ export default function SignInSide() {
               >
                 Sign In
               </Button>
-              {/* <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid> */}
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>

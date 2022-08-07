@@ -1,7 +1,10 @@
-import { Button } from '@mui/material'
+import { IconButton } from '@material-ui/core'
+import { Box, Button, Typography } from '@mui/material'
+import Image from 'next/image'
 import Link from 'next/link'
 import { foodsApi } from '../../helpers/functions/foodAndCocktailApi'
 import styles from './id.module.css'
+import favorite from '../../images/favorite.svg'
 
 interface IProps {
   data: {
@@ -44,7 +47,27 @@ export default function FoodsID(props: IProps) {
           className={styles.image}
         />
       </picture>
-      <h1>{data.strMeal}</h1>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingRight: '50px',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="h2" sx={{ m: 2, textAlign: 'start' }}>
+          {data.strMeal}
+        </Typography>
+        <IconButton
+          onClick={() =>
+            alert(`The recipe ${data.strMeal} was add to favorites`)
+          }
+        >
+          <Image src={favorite} alt="favorite" width="30px" height="30px" />
+        </IconButton>
+      </Box>
+
       <div>
         <h3 className={styles.title}>Ingredients</h3>
         <ul className={styles.ul}>

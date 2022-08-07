@@ -1,7 +1,9 @@
-import { Button } from '@mui/material'
+import { Box, Button, IconButton, Typography } from '@mui/material'
 import Link from 'next/link'
 import { cockTailApi } from '../../helpers/functions/foodAndCocktailApi'
 import styles from './id.module.css'
+import Image from 'next/image'
+import favorite from '../../images/favorite.svg'
 
 interface IProps {
   data: {
@@ -44,7 +46,26 @@ export default function DrinksID(props: IProps) {
           className={styles.image}
         />
       </picture>
-      <h1>{data.strDrink}</h1>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingRight: '50px',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="h2" sx={{ m: 2, textAlign: 'start' }}>
+          {data.strDrink}
+        </Typography>
+        <IconButton
+          onClick={() =>
+            alert(`The recipe ${data.strDrink} was add to favorites`)
+          }
+        >
+          <Image src={favorite} alt="favorite" width="30px" height="30px" />
+        </IconButton>
+      </Box>
       <div>
         <h3 className={styles.title}>Ingredients</h3>
         <ul className={styles.ul}>
