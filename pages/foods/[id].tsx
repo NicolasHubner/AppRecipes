@@ -89,7 +89,7 @@ export default function FoodsID(props: IProps) {
         allowFullScreen
         className={styles.video}
       ></iframe>
-      <Link href={`/drinks/${data.idMeal}/in-progress`}>
+      <Link href={`/foods/${data.idMeal}/in-progress`}>
         <Button
           size="large"
           sx={{
